@@ -25,7 +25,7 @@ public class AttendenceBean {
     @JoinColumn(name = "USER_ID")
     private LoginBean userId;
 
-        @Basic
+    @Basic
     @Column(name = "ATTENDENCE_STATUS")
     private String attendenceStatus;
 
