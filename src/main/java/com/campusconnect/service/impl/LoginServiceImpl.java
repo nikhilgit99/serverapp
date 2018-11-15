@@ -56,4 +56,9 @@ public class LoginServiceImpl implements LoginService {
     public LoginBean fetchLoginBean( String firstName,String lastName){
         return loginRepository.fetchLoginBean(firstName,lastName).get(0);
     }
+
+    /*public LoginBean fetchLoginBeanbyroleid( long roleId){
+        return loginRepository.fetchLoginBeanbyroleid(roleId).get(0);
+    }*/
+
 }

@@ -31,8 +31,6 @@ public class LoginBean {
     private String firstName;
 
     @Column(name="MIDDLE_NAME")
-    @NotNull(message="user.middlename.required")
-    @NotEmpty(message="user.middlename.required")
     private String middleName;
 
     @Column(name="LAST_NAME")
@@ -60,6 +58,14 @@ public class LoginBean {
     @NotNull(message="user.dob.required")
     @NotEmpty(message="user.dob.required")
     private String DOB;
+
+    @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="ROLE_ID")
+    private RoleBean roleBean;
+
+    @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="COURSE_ID")
+    private CourseBean courseBean;
 
     @Column(name="ADDRESS_1")
     private String address1;
@@ -105,6 +111,24 @@ public class LoginBean {
                 "id=" + userId +
                 ", userName='" + userName + '\'' +
                 ", passWord='" + passWord + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", lastName'" + lastName + '\'' +
+                ", emailId='" + emailId + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", PAN='" + PAN + '\'' +
+                ", aadharCard='" + aadharCard + '\'' +
+                ", DOB='" + DOB + '\'' +
+                ", address1='" + address1 + '\'' +
+                ", address2='" + address2 + '\'' +
+                ", address3='" + address3 + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", pinCode='" + pinCode + '\'' +
+                ", bloodGroup='" + bloodGroup + '\'' +
+                ", gender='" + gender + '\'' +
+                ", cre_ts='" + cre_ts + '\'' +
+                ", upd_ts='" + upd_ts + '\'' +
                 '}';
     }
 
@@ -208,6 +232,38 @@ public class LoginBean {
 
     public void setCollegeName(String collegeName) {
         this.collegeName = collegeName;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public RoleBean getRoleBean() {
+        return roleBean;
+    }
+
+    public void setRoleBean(RoleBean roleBean) {
+        this.roleBean = roleBean;
+    }
+
+    public String getCre_ts() {
+        return cre_ts;
+    }
+
+    public void setCre_ts(String cre_ts) {
+        this.cre_ts = cre_ts;
+    }
+
+    public String getUpd_ts() {
+        return upd_ts;
+    }
+
+    public void setUpd_ts(String upd_ts) {
+        this.upd_ts = upd_ts;
     }
 
 }

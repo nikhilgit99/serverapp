@@ -1,5 +1,7 @@
 package com.campusconnect.entity;
 
+import com.campusconnect.Constants.AttendenceStatus;
+
 import javax.persistence.*;
 
 /**
@@ -16,18 +18,19 @@ public class AttendenceBean {
     private long attendenceId;
 
     @Basic
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "SESSION_ID")
-    private SessionBean sessionId;
+    private SessionBean sessionBean;
 
     @Basic
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
-    private LoginBean userId;
+    private LoginBean loginBean;
 
     @Basic
+    @Enumerated(EnumType.STRING)
     @Column(name = "ATTENDENCE_STATUS")
-    private String attendenceStatus;
+    private AttendenceStatus attendenceStatus;
 
     @Basic
     @Column(name = "CRE_TS")
@@ -44,7 +47,6 @@ public class AttendenceBean {
     public String toString() {
         return "LoginBean{" +
                 "id=" + attendenceId +
-                ", userId='" + userId + '\'' +
                 ", attendenceStatus='" + attendenceStatus + '\'' +
                 ", creTs='" + creTs + '\'' +
                 ", updTs='" + updTs + '\'' +
@@ -59,27 +61,11 @@ public class AttendenceBean {
         this.attendenceId = attendenceId;
     }
 
-    public SessionBean getSessionId() {
-        return sessionId;
-    }
-
-    public void setSessionId(SessionBean sessionId) {
-        this.sessionId = sessionId;
-    }
-
-    public LoginBean getUserId() {
-        return userId;
-    }
-
-    public void setUserId(LoginBean userId) {
-        this.userId = userId;
-    }
-
-    public String getAttendenceStatus() {
+    public AttendenceStatus getAttendenceStatus() {
         return attendenceStatus;
     }
 
-    public void setAttendenceStatus(String attendenceStatus) {
+    public void setAttendenceStatus(AttendenceStatus attendenceStatus) {
         this.attendenceStatus = attendenceStatus;
     }
 
@@ -97,6 +83,22 @@ public class AttendenceBean {
 
     public void setUpdTs(String updTs) {
         this.updTs = updTs;
+    }
+
+    public SessionBean getSessionBean() {
+        return sessionBean;
+    }
+
+    public void setSessionBean(SessionBean sessionBean) {
+        this.sessionBean = sessionBean;
+    }
+
+    public LoginBean getLoginBean() {
+        return loginBean;
+    }
+
+    public void setLoginBean(LoginBean loginBean) {
+        this.loginBean = loginBean;
     }
 
 

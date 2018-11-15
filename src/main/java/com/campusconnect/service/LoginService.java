@@ -20,5 +20,6 @@ public interface LoginService {
     public LoginBean getLoginById(long id);
     public LoginBean getLoginByUserName(String userName);
     public LoginBean fetchLoginBean(String firstName, String lastName);
+    //public LoginBean fetchLoginBeanbyroleid(long roleId);
 
 }

@@ -14,6 +14,22 @@ import java.util.List;
 @Repository
 public interface LoginRepository extends CrudRepository<LoginBean, Long> {
 
+
+
     @Query("SELECT a FROM LoginBean a WHERE a.firstName=:firstName and a.lastName=:lastName")
-    List<LoginBean> fetchLoginBean(@Param("firstName") String firstName, @Param("lastName") String lastName);
+    List<LoginBean> fetchLoginBean(
+            @Param("firstName") String firstName,
+            @Param("lastName") String lastName);
+
+
+   /* @Query("SELECT a FROM Loginbean a WHERE a.roleBean.roleId=:roleId")
+    List<LoginBean> fetchLoginBeanbyroleid(
+            @Param("roleId") long roleId);*/
+
+    /*@Query("SELECT a FROM Loginbean a INNER JOIN a.roleId rb WHERE rb.roleId=:roleId")
+    * @Query("SELECT a FROM Loginbean a WHERE a.roleBean.roleId=:roleId")*/
+
+
+
+
 }
