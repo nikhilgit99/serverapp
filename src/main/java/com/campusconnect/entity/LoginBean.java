@@ -59,11 +59,11 @@ public class LoginBean {
     @NotEmpty(message="user.dob.required")
     private String DOB;
 
-    @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="ROLE_ID")
+    @ManyToOne(cascade=CascadeType.ALL)
+    //@JoinColumn(name="ROLE_ID")
     private RoleBean roleBean;
 
-    @OneToOne(cascade=CascadeType.ALL)
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="COURSE_ID")
     private CourseBean courseBean;
 

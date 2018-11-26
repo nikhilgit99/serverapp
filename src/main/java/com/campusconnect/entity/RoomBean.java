@@ -9,6 +9,7 @@ import javax.persistence.*;
  */
 
 @Entity
+@Table(name = "ROOM")
 public class RoomBean {
 
     @Id
