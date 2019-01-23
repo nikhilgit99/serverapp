@@ -1,7 +1,7 @@
 package com.campusconnect.controller;
 
-import com.campusconnect.entity.LoginBean;
-import com.campusconnect.service.LoginService;
+import com.campusconnect.entity.UserBean;
+import com.campusconnect.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,33 +9,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 /**
  * Created by NIKHI on 25-08-2018.
  */
 @Controller
 @RequestMapping(value = "/login")
-public class LoginController {
+public class UserController {
 
     @Autowired
-    private LoginService loginService;
+    private UserService userService;
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     @ResponseBody
-    public String addUserLogin(@RequestBody LoginBean loginBean){
+    public String addUserLogin(@RequestBody UserBean userBean){
 
-        loginService.addLogin(loginBean);
+        userService.addLogin(userBean);
 
         return "Person succesfully saved!";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
-    public String updateUserLogin(@RequestBody LoginBean loginBean){
+    public String updateUserLogin(@RequestBody UserBean userBean){
 
-        loginService.updateLogin(loginBean);
+        userService.updateLogin(userBean);
 
         return "Person succesfully updated!";
     }

@@ -1,7 +1,8 @@
 package com.campusconnect.entity;
 
+import com.campusconnect.Constants.rolesEnum;
+
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Created by NIKHI on 20-10-2018.
@@ -17,14 +18,12 @@ public class RoleBean {
     private long roleId;
 
     @Basic
+    @Enumerated(EnumType.STRING)
     @Column(name = "ROLE_NAME" , unique = true)
-    private String roleName;
+    private rolesEnum roleName;
 
-/*
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "roleBean")
-    private List<LoginBean> loginbean;
-*/
-
+    @OneToOne(mappedBy = "roleBean")
+    private UserBean userBean;
 
     public long getRoleId() {
         return roleId;
@@ -34,21 +33,21 @@ public class RoleBean {
         this.roleId = roleId;
     }
 
-    public String getRoleName() {
+    public rolesEnum getRoleName() {
         return roleName;
     }
 
-    public void setRoleName(String roleName) {
+    public void setRoleName(rolesEnum roleName) {
         this.roleName = roleName;
     }
 
-   /* public List<LoginBean> getLoginbean() {
-        return loginbean;
+    public UserBean getUserBean() {
+        return userBean;
     }
 
-    public void setLoginbean(List<LoginBean> loginbean) {
-        this.loginbean = loginbean;
-    }*/
+    public void setUserBean(UserBean userBean) {
+        this.userBean = userBean;
+    }
 
 }
 

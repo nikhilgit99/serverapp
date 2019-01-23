@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
  */
 @Table(name = "USER_BASE")
 @Entity
-public class LoginBean {
+public class UserBean {
     @Id
     @Basic
     @Column(name="USER_ID" , unique = true)
@@ -59,11 +59,20 @@ public class LoginBean {
     @NotEmpty(message="user.dob.required")
     private String DOB;
 
-    @ManyToOne(cascade=CascadeType.ALL)
-    //@JoinColumn(name="ROLE_ID")
+    @OneToOne
+    @JoinColumn(name = "ROLE_ID")
     private RoleBean roleBean;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    /*@OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "ROLE_ID", nullable = false)
+    private RoleBean roleBean;*/
+
+    /*@ManyToOne(cascade=CascadeType.ALL)
+    //@JoinColumn(name="ROLE_ID")
+    //private HashSet<RoleBean> roleBeans;
+    private RoleBean roleBean;*/
+
+    @OneToOne
     @JoinColumn(name="COURSE_ID")
     private CourseBean courseBean;
 
@@ -91,10 +100,11 @@ public class LoginBean {
     @Column(name="GENDER")
     private String gender;
 
-    @Column(name="COLLEGE_NAME")
-    @NotNull(message="user.college.required")
-    @NotEmpty(message="user.college.required")
-    private String collegeName;
+    /*@NotNull(message="user.college.required")
+        @NotEmpty(message="user.college.required")*/
+    @ManyToOne
+    @JoinColumn(name = "COLLEGE_ID")
+    private CollegeBean collegeBean;
 
     @Column(name="CRE_TS")
     private String cre_ts;
@@ -102,12 +112,9 @@ public class LoginBean {
     @Column(name="UPD_TS")
     private String upd_ts;
 
-    public LoginBean() {
-    }
-
     @Override
     public String toString() {
-        return "LoginBean{" +
+        return "UserBean{" +
                 "id=" + userId +
                 ", userName='" + userName + '\'' +
                 ", passWord='" + passWord + '\'' +
@@ -226,12 +233,12 @@ public class LoginBean {
         this.gender = gender;
     }
 
-    public String getCollegeName() {
-        return collegeName;
+    public CollegeBean getCollegeBean() {
+        return collegeBean;
     }
 
-    public void setCollegeName(String collegeName) {
-        this.collegeName = collegeName;
+    public void setCollegeBean(CollegeBean collegeBean) {
+        this.collegeBean = collegeBean;
     }
 
     public long getUserId() {
@@ -248,6 +255,14 @@ public class LoginBean {
 
     public void setRoleBean(RoleBean roleBean) {
         this.roleBean = roleBean;
+    }
+
+    public CourseBean getCourseBean() {
+        return courseBean;
+    }
+
+    public void setCourseBean(CourseBean courseBean) {
+        this.courseBean = courseBean;
     }
 
     public String getCre_ts() {

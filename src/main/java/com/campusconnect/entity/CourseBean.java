@@ -30,6 +30,9 @@ public class CourseBean {
     @Column(name="SEMESTER")
     private String semester;
 
+    @OneToOne(mappedBy = "courseBean")
+    private UserBean userBean;
+
     public long getCourseId() {
         return courseId;
     }

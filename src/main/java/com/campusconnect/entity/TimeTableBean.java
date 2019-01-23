@@ -4,7 +4,6 @@ package com.campusconnect.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import com.campusconnect.entity.LoginBean.*;
 
 /**
  * Created by NIKHI on 01-09-2018.
@@ -32,7 +31,7 @@ public class TimeTableBean {
 
        /* @ManyToOne(fetch=FetchType.EAGER)
         @JoinColumn(name="uid")
-        private LoginBean UserID;*/
+        private UserBean UserID;*/
 
         /*@ManyToOne(fetch=FetchType.EAGER)
         @JoinColumn(name="COURSE_ID")

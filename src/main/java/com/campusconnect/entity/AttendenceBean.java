@@ -25,7 +25,7 @@ public class AttendenceBean {
     @Basic
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
-    private LoginBean loginBean;
+    private UserBean userBean;
 
     @Basic
     @Enumerated(EnumType.STRING)
@@ -45,7 +45,7 @@ public class AttendenceBean {
 
     @Override
     public String toString() {
-        return "LoginBean{" +
+        return "UserBean{" +
                 "id=" + attendenceId +
                 ", attendenceStatus='" + attendenceStatus + '\'' +
                 ", creTs='" + creTs + '\'' +
@@ -93,12 +93,12 @@ public class AttendenceBean {
         this.sessionBean = sessionBean;
     }
 
-    public LoginBean getLoginBean() {
-        return loginBean;
+    public UserBean getUserBean() {
+        return userBean;
     }
 
-    public void setLoginBean(LoginBean loginBean) {
-        this.loginBean = loginBean;
+    public void setUserBean(UserBean userBean) {
+        this.userBean = userBean;
     }
 
 

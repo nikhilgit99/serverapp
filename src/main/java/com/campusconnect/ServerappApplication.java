@@ -48,5 +48,4 @@ public class ServerappApplication {
 	public SessionFactory sessionFactory(@Qualifier("entityManagerFactory") EntityManagerFactory emf) {
 		return emf.unwrap(SessionFactory.class);
 	}*/
-
 }
